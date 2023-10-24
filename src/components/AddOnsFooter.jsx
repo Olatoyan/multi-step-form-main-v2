@@ -17,7 +17,10 @@ function AddOnsFooter() {
       <Link
         to={"/plans"}
         className="text-grey text-[1.6rem] font-medium cursor-pointer hover:text-purple transition-all duration-300"
-        onClick={() => navigate("/plans")}
+        onClick={() => {
+          dispatch({ type: "setSteps", payload: 2 });
+          navigate("/plans");
+        }}
       >
         Go Back
       </Link>

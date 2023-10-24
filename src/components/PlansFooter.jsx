@@ -24,7 +24,10 @@ function PlansFooter() {
         <Link
           to={"/"}
           className="text-grey text-[1.6rem] font-medium cursor-pointer hover:text-purple transition-all duration-300"
-          onClick={() => navigate("/")}
+          onClick={() => {
+            formDispatch({ type: "setSteps", payload: 1 });
+            navigate("/");
+          }}
         >
           Go Back
         </Link>

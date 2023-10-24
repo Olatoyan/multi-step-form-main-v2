@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { usePlans } from "../contexts/PlansContext";
 import FormLayout from "./FormLayout";
 import { useAddOns } from "../contexts/AddOnsContext";
 import SummaryFooter from "./SummaryFooter";
+import { useForm } from "../contexts/FormContexts";
 
 function SummaryForm() {
   const { selectedPlan, type, planPrice } = usePlans();
   const { selectedAddOns } = useAddOns();
+  const { dispatch } = useForm();
 
+  const navigate = useNavigate();
   const totalAddOnPrice = selectedAddOns.reduce((total, addOn) => {
     return total + Number(addOn.price);
   }, 0);
@@ -31,6 +34,10 @@ function SummaryForm() {
             <Link
               to="/plans"
               className="text-[1.4rem] text-grey leading-8 underline hover:text-purple"
+              onClick={() => {
+                dispatch({ type: "setSteps", payload: 2 });
+                navigate("/plans");
+              }}
             >
               Change
             </Link>

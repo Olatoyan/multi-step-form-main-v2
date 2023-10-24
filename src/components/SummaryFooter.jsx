@@ -17,7 +17,10 @@ function SummaryFooter() {
       <Link
         to="/addOns"
         className="text-grey text-[1.6rem] font-medium cursor-pointer hover:text-purple transition-all duration-300"
-        onClick={() => navigate("/addOns")}
+        onClick={() => {
+          dispatch({ type: "setSteps", payload: 3 });
+          navigate("/addOns");
+        }}
       >
         Go Back
       </Link>
